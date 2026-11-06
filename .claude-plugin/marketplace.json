@@ -1,0 +1,15 @@
+{
+  "name": "getcaramelo",
+  "description": "Plugins do getcaramelo.dev para Claude Code",
+  "owner": {
+    "name": "Guilherme Gomes",
+    "url": "https://getcaramelo.dev"
+  },
+  "plugins": [
+    {
+      "name": "caramelo",
+      "source": "./",
+      "description": "Fluxo Spec-Driven Development com subagentes de DDD, OWASP Top 10, SOLID/DRY/KISS, revisao de codigo, testes, API, persistencia e diagramas"
+    }
+  ]
+}

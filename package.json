@@ -1,0 +1,39 @@
+{
+  "name": "caramelo-sdd",
+  "version": "0.1.0",
+  "description": "Spec-Driven Development para Claude Code: fluxo /caramelo:spec -> plan -> tasks -> implement -> review -> verify, com subagentes de DDD, OWASP Top 10, SOLID/DRY/KISS, revisao de codigo, testes, API, persistencia e diagramas.",
+  "type": "module",
+  "bin": {
+    "caramelo-sdd": "bin/caramelo-sdd.mjs"
+  },
+  "files": [
+    ".claude-plugin",
+    "agents",
+    "skills",
+    "templates",
+    "bin",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guigomes91/caramelo-sdd.git"
+  },
+  "homepage": "https://getcaramelo.dev",
+  "author": "Guilherme Gomes",
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "claude-code-plugin",
+    "sdd",
+    "spec-driven-development",
+    "ddd",
+    "owasp",
+    "solid",
+    "code-review",
+    "agents"
+  ]
+}
