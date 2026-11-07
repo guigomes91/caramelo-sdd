@@ -2,9 +2,9 @@
 /**
  * Instalador do Caramelo SDD.
  *
- *   npx caramelo-sdd install          plugin do Claude Code (recebe atualizacoes)
- *   npx caramelo-sdd vendor           copia os arquivos para ./.claude (versionado no repo)
- *   npx caramelo-sdd doctor           mostra o que esta instalado
+ *   npx github:guigomes91/caramelo-sdd install          plugin do Claude Code (recebe atualizacoes)
+ *   npx github:guigomes91/caramelo-sdd vendor           copia os arquivos para ./.claude (versionado no repo)
+ *   npx github:guigomes91/caramelo-sdd doctor           mostra o que esta instalado
  */
 
 import { cpSync, existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
@@ -56,8 +56,8 @@ function resolveSource() {
       `A origem do plugin nao esta definida.\n` +
       `  Publique este repositorio e ajuste "repository" no package.json,\n` +
       `  ou passe a origem na mao:\n\n` +
-      `    npx caramelo-sdd install --from seu-usuario/caramelo-sdd\n` +
-      `    npx caramelo-sdd install --from local    ${C.dim}# usa os arquivos deste pacote${C.reset}`
+      `    npx github:guigomes91/caramelo-sdd install --from seu-usuario/caramelo-sdd\n` +
+      `    npx github:guigomes91/caramelo-sdd install --from local    ${C.dim}# usa os arquivos deste pacote${C.reset}`
     );
   }
   return repo;
@@ -82,7 +82,7 @@ function requireClaude() {
     fail(
       'O comando "claude" nao foi encontrado no PATH.\n' +
       '  Instale o Claude Code (https://claude.com/claude-code) ou use:\n' +
-      '    npx caramelo-sdd vendor    # copia os arquivos para ./.claude, sem plugin'
+      '    npx github:guigomes91/caramelo-sdd vendor    # copia os arquivos para ./.claude, sem plugin'
     );
   }
   return (r.stdout || '').trim();
@@ -187,7 +187,7 @@ function doctor() {
     const list = claude(['plugin', 'list'], { capture: true });
     const lines = String(list.stdout || '').split('\n').filter((l) => l.toLowerCase().includes(PLUGIN));
     if (lines.length) { ok('plugin instalado:'); lines.forEach((l) => say(`  ${C.dim}${l.trim()}${C.reset}`)); }
-    else warn('plugin nao instalado (rode: npx caramelo-sdd install)');
+    else warn('plugin nao instalado (rode: npx github:guigomes91/caramelo-sdd install)');
   }
 
   const cwd = process.cwd();
@@ -207,7 +207,7 @@ function help() {
 ${C.bold}caramelo-sdd${C.reset} ${C.dim}v${pkg.version}${C.reset} — Spec-Driven Development para Claude Code
 
 ${C.bold}USO${C.reset}
-  npx caramelo-sdd <comando> [opcoes]
+  npx github:guigomes91/caramelo-sdd <comando> [opcoes]
 
 ${C.bold}COMANDOS${C.reset}
   install        Instala como plugin do Claude Code ${C.dim}(recomendado: recebe atualizacoes)${C.reset}
@@ -222,9 +222,9 @@ ${C.bold}OPCOES${C.reset}
   --force        vendor: sobrescreve arquivos existentes
 
 ${C.bold}EXEMPLOS${C.reset}
-  npx caramelo-sdd install --scope project
-  npx caramelo-sdd install --from local
-  npx caramelo-sdd vendor --force
+  npx github:guigomes91/caramelo-sdd install --scope project
+  npx github:guigomes91/caramelo-sdd install --from local
+  npx github:guigomes91/caramelo-sdd vendor --force
 `);
 }
 

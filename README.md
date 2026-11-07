@@ -16,33 +16,27 @@ Recebe atualizações com `claude plugin update`.
 claude plugin install caramelo --marketplace guigomes91/caramelo-sdd --scope project
 ```
 
-Ou pelo instalador, que valida o ambiente e explica o próximo passo:
+Ou pelo instalador, que roda direto do GitHub, valida o ambiente e explica o próximo passo:
 
 ```bash
-npx caramelo-sdd install --scope project
+npx github:guigomes91/caramelo-sdd install --scope project
 ```
 
 Escopos: `user` (todos os seus projetos), `project` (o repositório, para o time inteiro, via `.claude/settings.json` versionado) ou `local` (só você, só neste repositório).
 
-### 2. Via npm, direto do pacote
-
-Como o pacote npm **é** o plugin, o Claude Code instala dele sem marketplace:
-
-```bash
-claude plugin install caramelo-sdd@npm
-```
-
-### 3. Modo vendor, sem plugin
+### 2. Modo vendor, sem plugin
 
 Copia agentes e skills para dentro do repositório, para quem prefere versionar os arquivos junto com o código:
 
 ```bash
-npx caramelo-sdd vendor
+npx github:guigomes91/caramelo-sdd vendor
 ```
 
 Isso escreve `.claude/agents/*.md`, `.claude/skills/caramelo-*/SKILL.md` e `.claude/caramelo/templates/`. Neste modo os comandos ficam com hífen (`/caramelo-spec`), não há atualização automática, e `--force` sobrescreve para atualizar.
 
-Em qualquer modo, `npx caramelo-sdd doctor` mostra o que está instalado.
+Em qualquer modo, `npx github:guigomes91/caramelo-sdd doctor` mostra o que está instalado.
+
+> O pacote não é publicado no npm. Use sempre o prefixo `github:` nos comandos `npx`: sem ele, o npm procura `caramelo-sdd` no registro público, onde esse nome não pertence a este projeto.
 
 ---
 
@@ -123,12 +117,12 @@ Os agentes foram escritos para evitar os três fracassos típicos de revisão au
 ## Desenvolvimento
 
 ```bash
-claude plugin validate .                      # valida manifesto, marketplace e componentes
-npx caramelo-sdd install --from local         # instala a partir desta pasta
-/reload-plugins                               # recarrega em uma sessão aberta
+claude plugin validate .                        # valida manifesto, marketplace e componentes
+node bin/caramelo-sdd.mjs install --from local  # instala a partir desta pasta
+/reload-plugins                                 # recarrega em uma sessão aberta
 ```
 
-Este repositório já aponta para `guigomes91/caramelo-sdd`, então `npx caramelo-sdd install` funciona sem `--from`. Para habilitar o caminho `@npm`, falta apenas `npm publish`. Em um fork, ajuste `repository` no `package.json` e em `.claude-plugin/plugin.json`.
+Este repositório já aponta para `guigomes91/caramelo-sdd`, então `npx github:guigomes91/caramelo-sdd install` funciona sem `--from`. Em um fork, ajuste `repository` no `package.json` e em `.claude-plugin/plugin.json`.
 
 ## Licença
 
